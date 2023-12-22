@@ -1,17 +1,20 @@
-# Use an official PHP runtime as a parent image
-FROM php:7.4-apache
+# Use an official Node runtime as a parent image
+FROM node:14
 
-# Set the working directory to /var/www/html
-WORKDIR /var/www/html
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-# Copy the current directory contents into the container at /var/www/html
-COPY . /var/www/html
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-# Install any needed extensions
-RUN docker-php-ext-install mysqli
+# Install app dependencies
+RUN npm install
 
-# Enable Apache modules and restart Apache
-RUN a2enmod rewrite && service apache2 restart
+# Bundle app source
+COPY . .
 
-# Run Apache in the foreground when the container launches
-CMD ["apache2-foreground"]
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Define the command to run your app
+CMD ["npm", "start"]
