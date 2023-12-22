@@ -19,14 +19,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Deploy Portainer') {
-            steps {
-                script {
-                    // Deploy Portainer
-                    sh 'docker-compose up -d portainer'
-                }
-            }
-        }
     }
 }
