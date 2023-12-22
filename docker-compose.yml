@@ -1,6 +1,12 @@
 version: '3'
 services:
-  react-app:
-    image: your-react-app-image
+  web:
+    build: .
     ports:
-      - "3000:80"
+      - "3000:3000"
+  portainer:
+    image: portainer/portainer-ce
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
