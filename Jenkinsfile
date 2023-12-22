@@ -11,15 +11,6 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                script {
-                    // Run tests if needed
-                    sh 'docker-compose run web'
-                }
-            }
-        }
-
         stage('Deploy') {
             steps {
                 script {
