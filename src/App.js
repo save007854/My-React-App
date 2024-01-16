@@ -4,7 +4,7 @@ const App = () => {
   const videoRef = useRef();
 
   useEffect(() => {
-    const cctvURL = 'http://195.196.36.242/mjpg/video.mjpg';
+    const cctvURL = 'rtsp://touch:Touch1234@f03e0ec59b99.sn.mynetname.net:5555';
 
     const updateCCTVStream = () => {
       videoRef.current.src = `${cctvURL}?${Date.now()}`;
