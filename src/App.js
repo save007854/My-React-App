@@ -1,18 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useRef } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          <code>Hello Word.</code>
-        </p>
+const App = () => {
+  const videoRef = useRef();
 
-      </header>
+  useEffect(() => {
+    const cctvURL = 'rtsp://b03773d78e34.entrypoint.cloud.wowza.com:1935/app-4065XT4Z/80c76e59_stream1';
+
+    const updateCCTVStream = () => {
+      videoRef.current.src = ${cctvURL}?${new Date().getTime()};
+    };
+
+    // Update every 5 seconds (adjust as needed)
+    const intervalId = setInterval(updateCCTVStream, 5000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+return (
+    <div>
+      <h1>CCTV Real-time Viewer with React</h1>
+      <video ref={videoRef} controls width="640" height="360">
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
-}
-
+};
 export default App;
