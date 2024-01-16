@@ -4,7 +4,7 @@ const App = () => {
   const videoRef = useRef();
 
   useEffect(() => {
-    const cctvURL = 'rtsp://b03773d78e34.entrypoint.cloud.wowza.com:1935/app-4065XT4Z/80c76e59_stream1';
+    const cctvURL = 'rtsp://rtspstream.com/ball';
 
     const updateCCTVStream = () => {
       videoRef.current.src = ${cctvURL}?${new Date().getTime()};
