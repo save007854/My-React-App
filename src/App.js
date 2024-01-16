@@ -4,7 +4,7 @@ const App = () => {
   const videoRef = useRef();
 
   useEffect(() => {
-    const cctvURL = 'rtsp://rtspstream.com/ball';
+    const cctvURL = 'http://195.196.36.242/mjpg/video.mjpg';
 
     const updateCCTVStream = () => {
       videoRef.current.src = `${cctvURL}?${Date.now()}`;
